@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Nickname Atlas</title>
+    <style>
+         :root {
+            --navy: #1f3a2b;   /* forest */
+            --blue: #3f7d4e;   /* fern */
+            --sky: #dcebd8;    /* sage mist */
+            --slate: #5f6b5a;  /* lichen */
+            --mist: #eaf0e4;   /* meadow haze */
+            --paper: #fbfcf8;  /* birch */
+            --line: #c9d6bf;   /* moss line */
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --navy: #e3efdf;
+                --blue: #8cc98f;
+                --sky: #1d3025;
+                --slate: #a6b3a0;
+                --mist: #111a14;
+                --paper: #18221b;
+                --line: #2c3d31;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.65;
+            color: var(--navy);
+            background: var(--mist);
+        }
+        header {
+            background:
+                radial-gradient(ellipse at 85% 0%, rgba(140, 201, 143, .22), transparent 55%),
+                var(--navy);
+            color: #fff;
+            padding: 3rem 1.5rem 3.5rem;
+            border-bottom: 6px solid var(--blue);
+        }
+        @media (prefers-color-scheme: dark) {
+            header { background: #0c1e14; color: #e3efdf; }
+        }
+        .wrap { max-width: 44rem; margin: 0 auto; }
+        h1 {
+            margin: 0 0 .5rem;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+        header p {
+            margin: 0;
+            max-width: 34rem;
+            font-family: system-ui, sans-serif;
+            color: #bcd6c1;
+        }
+        main { padding: 0 1.5rem 4rem; }
+        .panel {
+            max-width: 44rem;
+            margin: -1.75rem auto 0;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1.75rem;
+            box-shadow: 0 8px 24px rgba(31, 58, 43, .14);
+        }
+        .panel h2 {
+            margin: 0 0 1rem;
+            font-size: 1.25rem;
+            color: var(--blue);
+        }
+        input[type="text"] {
+            font: inherit;
+            padding: .55rem .8rem;
+            margin: 0 .5rem 1rem 0;
+            color: var(--navy);
+            background: var(--mist);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+        }
+        button {
+            font: inherit;
+            padding: .55rem 1.2rem;
+            color: #fff;
+            background: var(--blue);
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        @media (prefers-color-scheme: dark) {
+            button { color: #0c1e14; }
+        }
+        input[type="text"]:focus-visible, button:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+        #div1 {
+            min-height: 6rem;
+            padding: 1rem 1.25rem;
+            background: var(--sky);
+            border-left: 4px solid var(--blue);
+            border-radius: 4px;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: .95rem;
+            color: var(--navy);
+        }
+        #div1:empty::before {
+            content: "Output from main.py will appear here.";
+            color: var(--slate);
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-family: system-ui, sans-serif;
+            font-size: .875rem;
+            color: var(--slate);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="wrap">
+            <h1>The Nickname Atlas of Western & Southern Europe</h1>
+            <p>This continent has a vast and rich history of how each country obtained it's nickname. Type a country from Western or Southern Europe to find out it's nickname</p>
+        </div>
+    </header>
+
+     <main>
+        <section class="panel">
+            <h2>Country Search</h2>
+            <input type="text" id="country-input" placeholder="e.g. Spain">
+            <button py-click="search">Search</button>
+            <div id="div1"></div>
+        </section>
+    </main>
+
+    <footer>Powered by PyScript</footer>
+
+    <py-script src="main.py"></py-script>
+</body>
+</html>
